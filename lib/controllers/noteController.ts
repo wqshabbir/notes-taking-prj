@@ -45,6 +45,17 @@ export class NoteController {
         }
     }
 
+    public get_all_notes(req: Request, res: Response) {
+        const note_filter = {};
+            this.noteService.getAllNotes(note_filter, (err: any, note_data: INote) => {
+                if (err) {
+                    mongoError(err, res);
+                } else {
+                    successResponse('get all notes successfull', note_data, res);
+            }
+        });
+    }
+
     public update_note(req: Request, res: Response) {
         if (req.params.id &&
             req.body.title && req.body.description && req.body.owner && req.body.creationDate &&

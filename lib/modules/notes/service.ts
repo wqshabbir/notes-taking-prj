@@ -8,6 +8,10 @@ export default class NoteService {
         _session.save(callback);
     }
 
+    public getAllNotes(query: any, callback: any) {
+        notes.findOne(query, callback);
+    }
+
     public filterNote(query: any, callback: any) {
         notes.findOne(query, callback);
     }

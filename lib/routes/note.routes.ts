@@ -11,6 +11,10 @@ export class ManageNoteRoutes {
             this.notecontroller.create_note(req, res);
         });
 
+        app.get('/api/v1/notes/all', (req: Request, res: Response) => {
+            this.notecontroller.get_all_notes(req, res);
+        });
+
         app.get('/api/v1/note/:id', (req: Request, res: Response) => {
             this.notecontroller.get_note(req, res);
         });
