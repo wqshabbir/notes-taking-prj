@@ -1,7 +1,8 @@
+import { INoteService } from './Iservice';
 import { INote } from './model';
 import notes from './schema';
 
-export default class NoteService {
+export default class NoteService implements INoteService{
     
     public createNote(note_params: INote, callback: any) {
         const _session = new notes(note_params);
@@ -24,6 +25,10 @@ export default class NoteService {
     public deleteNote(_id: String, callback: any) {
         const query = { _id: _id };
         notes.deleteOne(query, callback);
+    }
+
+    static build() {
+        return new NoteService();
     }
 
 }

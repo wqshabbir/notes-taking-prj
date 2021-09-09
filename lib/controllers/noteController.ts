@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
 import { insufficientParameters, mongoError, successResponse, failureResponse } from '../modules/common/service';
 import { INote } from '../modules/notes/model';
-import NoteService from '../modules/notes/service';
+import { INoteService } from '../modules/notes/Iservice';
 import e = require('express');
+import NoteService from '../modules/notes/service';
 
 export class NoteController {
 
-    private noteService: NoteService = new NoteService();
+    private noteService: INoteService = NoteService.build();
 
     public create_note(req: Request, res: Response) {
         if (req.body.title && req.body.description && req.body.owner && req.body.creationDate &&
