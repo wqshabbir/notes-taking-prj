@@ -9,7 +9,7 @@ export default class NoteService {
     }
 
     public getAllNotes(query: any, callback: any) {
-        notes.findOne(query, callback);
+        notes.find(query, callback);
     }
 
     public filterNote(query: any, callback: any) {
