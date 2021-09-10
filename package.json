@@ -4,9 +4,10 @@
   "description": "",
   "main": "./dist/server.js",
   "scripts": {
-    "test": "ts-node ./lib/server.ts",
+    "start": "ts-node ./lib/server.ts",
     "dev": "tsc && nodemon ./dist/server.js",
-    "prod": "tsc && nodemon ./dist/server.js"
+    "prod": "tsc && nodemon ./dist/server.js",
+    "test": "nyc mocha"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +17,40 @@
     "express": "^4.17.1",
     "mongoose": "^5.9.7",
     "nodemon": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.21",
+    "@types/chai-as-promised": "^0.0.31",
+    "@types/mocha": "^9.0.0",
+    "@types/supertest": "^2.0.1",
+    "chai": "^4.0.2",
+    "chai-as-promised": "^7.1.1",
+    "cross-env": "^5.0.1",
+    "mocha": "^3.4.2",
+    "nock": "^9.0.13",
+    "nyc": "^11.0.3",
+    "sinon": "^2.3.6",
+    "source-map-support": "^0.5.20",
+    "supertest": "^3.0.0",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  },
+  "nyc": {
+    "include": [
+      "lib/**/*.ts"
+    ],
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
   }
 }
