@@ -7,7 +7,8 @@ import NoteService from '../modules/notes/service';
 
 export class NoteController {
 
-    private noteService: INoteService = NoteService.build();
+    constructor( private noteService: INoteService = NoteService.build() ) {
+    }
 
     public create_note(req: Request, res: Response) {
         if (req.body.title && req.body.description && req.body.owner && req.body.creationDate &&
